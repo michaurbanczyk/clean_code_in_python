@@ -23,10 +23,11 @@ def db_backup():
 class DatabaseHandler:
     def __enter__(self):
         stop_database()
-        return self # this is a good practice to always try to return something on return
+        return self  # this is a good practice to always try to return something on return
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         start_database()
+
 
 def db_handler_from_class():
     with DatabaseHandler():
@@ -42,6 +43,7 @@ def db_handler():
     finally:
         start_database()
 
+
 def db_handler_from_decorator():
     with db_handler():
         db_backup()
@@ -49,4 +51,3 @@ def db_handler_from_decorator():
 
 db_handler_from_class()
 db_handler_from_decorator()
-
